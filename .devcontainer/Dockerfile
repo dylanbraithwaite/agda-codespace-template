@@ -10,8 +10,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8  
 
-# [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends zlib1g-dev libncurses5-dev cabal-install alex happy \
-    && cabal update \
-    && cabal install Agda-2.6.2
+    && apt-get -y install --no-install-recommends zlib1g-dev libncurses5-dev cabal-install alex happy
+    
+USER vscode
+
+RUN cabal update && cabal install Agda-2.6.2
